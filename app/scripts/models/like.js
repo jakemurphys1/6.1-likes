@@ -6,20 +6,18 @@ defaults:{
   "quantity":0
 },
 refresh: function(){
-  this.defaults.quantity+=1;
+  this.set("quantity", this.get("quantity") +1);
   $(".buttoncontainer").empty();
   $(".buttoncontainer").append('<button type="button" class="btn btn-secondary"><p>' + this.toJSON() +'</p></button>');
 },
 toJSON:function(){
-  var text = this.defaults.quantity + " Likes";
-  if(this.defaults.quantity<=1){
-    text = this.defaults.quantity + " Like"
+  var text = this.get("quantity") + " Likes";
+  if(this.get("quantity")<=1){
+    text = this.get("quantity") + " Like"
   }
   return text;
 }
 });
-
-var thislike=new Likes();
 
 
 module.exports = Likes;
